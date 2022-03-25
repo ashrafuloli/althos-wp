@@ -1,0 +1,4 @@
+sass --watch C:\laragon\www\wordpress-project\althos\wp-content\themes\althos\assets\scss\main.scss:C:\laragon\www\wordpress-project\althos\wp-content\themes\althos\assets\css\main.css
+
+// if minify css
+--style=compressed && postcss

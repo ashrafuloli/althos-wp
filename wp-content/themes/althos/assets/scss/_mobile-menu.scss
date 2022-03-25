@@ -1,0 +1,132 @@
+@use "common" as *;
+
+.slide-bar {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  right: -330px;
+  width: 300px;
+  padding: 25px 0px;
+  height: 100%;
+  display: block;
+  background-color: #ffffff;
+  z-index: 1020;
+  -webkit-transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -moz-transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  box-shadow: -5px 0 20px -5px rgba(0, 0, 0, 0.5);
+  @include mq(xs) {
+    right: -120%;
+    width: 100%;
+  }
+}
+
+.slide-bar.show {
+  right: 0;
+}
+
+.close-mobile-menu {
+  a {
+    color: #283444;
+    position: relative;
+    z-index: 2;
+    font-size: 16px;
+    top: -10px;
+    left: 20px;
+
+    &:hover {
+      color: #ff0000;
+    }
+  }
+}
+
+.on-side {
+  overflow: hidden;
+}
+
+.body-overlay {
+  background-color: rgba(0, 0, 0, .5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  left: 0;
+  opacity: 0;
+  display: none;
+  @include transition(0.3s);
+}
+
+.body-overlay.active {
+  opacity: 1;
+  display: block;
+}
+
+.side-mobile-menu {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        padding: 13px 24px;
+        display: block;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+        color: #283444;
+
+        &:hover {
+          color: $theme-color;
+        }
+      }
+
+      ul {
+        padding-left: 0;
+        list-style: none;
+        margin: 0;
+        background: #F5FAFF;
+
+        li {
+          margin: 0;
+
+          &:hover {
+            > a {
+              color: $theme-color;
+            }
+          }
+
+          a {
+            position: relative;
+            text-transform: capitalize;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    li.has-dropdown {
+      > a {
+        &:after {
+          position: absolute;
+          content: "\f0d8";
+          right: 16px;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: all 0.3s ease-out;
+          font-family: 'Font Awesome 5 Pro';
+        }
+
+        &[aria-expanded="true"] {
+          color: $theme-color;
+
+          &:after {
+            content: "\f0d7";
+          }
+        }
+      }
+    }
+  }
+}
